@@ -23,10 +23,10 @@ function args.parse(list)
                 if name == arg then
                     value.handler()
                     found = true
-                    break -- sort de la boucle sur les noms
+                    break
                 end
             end
-            if found then break end -- sort de la boucle sur registered
+            if found then break end
         end
 
         if not found then
