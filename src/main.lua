@@ -13,15 +13,29 @@ function args.register(names, handler)
 end
 
 function args.parse(list)
+    local undefined = {}
+
     for _, arg in ipairs(list) do
+        local found = false
+
         for _, value in ipairs(args.registered) do
-            for _, name in ipairs(value["names"]) do
+            for _, name in ipairs(value.names) do
                 if name == arg then
-                    value["handler"]()
+                    value.handler()
+                    found = true
+                    break -- sort de la boucle sur les noms
                 end
             end
+            if found then break end -- sort de la boucle sur registered
+        end
+
+        if not found then
+            table.insert(undefined, arg)
         end
     end
+
+    return undefined
 end
+
 
 return args

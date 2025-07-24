@@ -14,6 +14,6 @@ dependencies = {
 build = {
     type = "builtin",
     modules = {
-        lbat = "src/main.lua"
+        args = "src/main.lua"
     }
 }
